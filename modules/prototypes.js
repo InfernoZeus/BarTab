@@ -195,7 +195,8 @@ BarTabHandler.prototype = {
     if (aTab.getAttribute("ontab") == "true") {
       return;
     }
-    if (BarTabUtils.whiteListed(aTab.linkedBrowser.currentURI)) {
+    if (BarTabUtils.whiteListed(aTab.linkedBrowser.currentURI)
+        || !BarTabUtils.getPref("unloadPinnedTabs") && aTab.pinned) {
       return;
     }
 
